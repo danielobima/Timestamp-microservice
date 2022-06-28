@@ -35,8 +35,8 @@ app.get('/api/:date?',(req,res)=>{
       res.send({"unix":d.getTime(),"utc":d.toUTCString()})
     }
     else{
-      timestamp = new Date(1451001600000);
-      if(isNaN(timestamp) == false){
+      timestamp = new Date(parseInt(req.params.date));
+      if(timestamp.toUTCString() !== 'Invalid Date'){
         console.log(2);
         res.send({"unix":timestamp.getTime(),"utc":timestamp.toUTCString()})
       }
